@@ -22,4 +22,5 @@ provider "azurerm" {
 resource "azurerm_resource_group" "example" {
   name     = "rg-example-1"
   location = "eastus"
+  tags   = {"env" = "dev" } 
 }
