@@ -30,3 +30,10 @@ module "vars" {
   source      = "./vars"
   environment = var.environment
 }
+
+
+resource "azurerm_resource_group" "example" {
+  name     = "rg-example-2"
+  location = "eastus"
+  tags     = { "env" = module.vars.env.environment }
+}
