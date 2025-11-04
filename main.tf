@@ -35,5 +35,5 @@ module "vars" {
 resource "azurerm_resource_group" "test" {
   name     = "rg-example-2"
   location = "eastus"
-  tags     = { "env" = module.vars.env.tags }
+  tags     = {  module.vars.env.tags }
 }
