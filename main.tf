@@ -19,13 +19,6 @@ provider "azurerm" {
   features {}
 }
 
-resource "azurerm_resource_group" "example" {
-  name     = "rg-example-1"
-  location = "eastus"
-  tags     = { "env" = "dev" }
-}
-
-
 module "vars" {
   source      = "./vars"
   environment = var.environment
@@ -33,7 +26,7 @@ module "vars" {
 
 
 resource "azurerm_resource_group" "test" {
-  name     = "rg-example-${var.environment}"
+  name     = "rg-${var.environment}"
   location = "eastus"
   tags = merge(
     {
@@ -41,5 +34,4 @@ resource "azurerm_resource_group" "test" {
     },
     module.vars.env.tags
   )
-
 }
