@@ -1,7 +1,8 @@
 locals {
   prod = {
+    keyvault_name = "ambatitestkv007"
+
     tags = {
-      keyvault_name  = "ambatitestkv007"
       terraform_repo = "myrepo"
     }
   }
