@@ -4,5 +4,6 @@ variable "environment" {
 }
 
 variable "keyvault_name" {
-  type = string
+  type    = string
+  default = null
 }
