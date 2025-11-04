@@ -30,3 +30,16 @@ module "vars" {
   source      = "./vars"
   environment = var.environment
 }
+
+
+resource "azurerm_resource_group" "test" {
+  name     = "rg-example-${var.environment}"
+  location = "eastus"
+  tags = merge(
+    {
+      env = var.environment
+    },
+    module.vars.env.tags
+  )
+
+}
