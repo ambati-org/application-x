@@ -8,7 +8,7 @@ variable "environment" {
 locals {
   environments = {
     dev  = local.dev
-    uat  = local.uat
+    test = local.test
     prod = local.prod
   }
 }
