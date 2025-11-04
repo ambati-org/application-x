@@ -32,7 +32,7 @@ module "vars" {
 }
 
 
-resource "azurerm_resource_group" "example" {
+resource "azurerm_resource_group" "test" {
   name     = "rg-example-2"
   location = "eastus"
   tags     = { "env" = module.vars.env.environment }
