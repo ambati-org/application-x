@@ -54,4 +54,3 @@ module "keyvault" {
   enable_telemetry    = false
 
 }
-
