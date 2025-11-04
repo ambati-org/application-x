@@ -43,6 +43,7 @@ module "naming" {
 data "azurerm_client_config" "this" {}
 
 module "keyvault" {
+  count   = var.environment == "dev" || var.environment == "prod" ? 1 : 0
   source  = "Azure/avm-res-keyvault-vault/azurerm"
   version = "0.10.2"
 
