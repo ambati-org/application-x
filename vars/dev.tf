@@ -3,5 +3,6 @@ locals {
 
     tags = {
       terraform_repo = "myrepo"
-  } }
+    }
+  }
 }
