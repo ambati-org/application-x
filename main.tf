@@ -10,7 +10,7 @@ terraform {
     organization = "ambati-org"
 
     workspaces {
-      tags = ["project:alphas"]
+      tags = ["project:alpha"]
     }
   }
 }
