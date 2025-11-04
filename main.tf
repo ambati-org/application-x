@@ -10,7 +10,7 @@ terraform {
     organization = "ambati-org"
 
     workspaces {
-      name = "dev"
+      tags = ["project:alpha"]
     }
   }
 }
@@ -19,8 +19,19 @@ provider "azurerm" {
   features {}
 }
 
-resource "azurerm_resource_group" "example" {
-  name     = "rg-example-1"
+module "vars" {
+  source      = "./vars"
+  environment = var.environment
+}
+
+
+resource "azurerm_resource_group" "test" {
+  name     = "rg-${var.environment}"
   location = "eastus"
-  tags   = {"env" = "dev" } 
+  tags = merge(
+    {
+      env = var.environment
+    },
+    module.vars.env.tags
+  )
 }
