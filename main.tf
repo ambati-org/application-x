@@ -24,7 +24,6 @@ module "vars" {
   environment = var.environment
 }
 
-
 resource "azurerm_resource_group" "test" {
   name     = "rg-${var.environment}"
   location = "eastus"
@@ -35,3 +34,22 @@ resource "azurerm_resource_group" "test" {
     module.vars.env.tags
   )
 }
+
+module "naming" {
+  source  = "Azure/naming/azurerm"
+  version = "0.3.0"
+}
+
+data "azurerm_client_config" "this" {}
+
+module "keyvault" {
+  source  = "Azure/avm-res-keyvault-vault/azurerm"
+  version = "0.10.2"
+
+  location            = azurerm_resource_group.this.location
+  name                = module.vars.env.keyvault_name
+  resource_group_name = azurerm_resource_group.test.name
+  tenant_id           = data.azurerm_client_config.this.tenant_id
+  enable_telemetry    = false
+}
+
