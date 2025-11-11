@@ -13,6 +13,7 @@ resource "azurerm_resource_group" "test" {
       env = var.environment
     },
     module.vars.env.tags
+
   )
 }
 
