@@ -23,18 +23,18 @@ module "naming" {
 
 data "azurerm_client_config" "this" {}
 
-module "keyvault" {
-  count   = var.environment == "dev" || var.environment == "prod" ? 1 : 0
-  source  = "Azure/avm-res-keyvault-vault/azurerm"
-  version = "0.10.2"
+# module "keyvault" {
+#   count   = var.environment == "dev" || var.environment == "prod" ? 1 : 0
+#   source  = "Azure/avm-res-keyvault-vault/azurerm"
+#   version = "0.10.2"
 
-  location                 = azurerm_resource_group.test.location
-  name                     = module.vars.env.keyvault_name
-  resource_group_name      = azurerm_resource_group.test.name
-  tenant_id                = data.azurerm_client_config.this.tenant_id
-  enable_telemetry         = false
-  purge_protection_enabled = false
-}
+#   location                 = azurerm_resource_group.test.location
+#   name                     = module.vars.env.keyvault_name
+#   resource_group_name      = azurerm_resource_group.test.name
+#   tenant_id                = data.azurerm_client_config.this.tenant_id
+#   enable_telemetry         = false
+#   purge_protection_enabled = false
+# }
 
 
 
