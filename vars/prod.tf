@@ -4,6 +4,8 @@ locals {
 
     tags = {
       terraform_repo = "myrepo"
+      cost_center    = "10294"
+
     }
   }
 }
