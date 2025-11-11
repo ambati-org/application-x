@@ -6,7 +6,7 @@ module "vars" {
 }
 
 resource "azurerm_resource_group" "test" {
-  name     = "rg-${var.environment}"
+  name     = "rg-alpha-${var.environment}"
   location = "eastus"
   tags = merge(
     {
